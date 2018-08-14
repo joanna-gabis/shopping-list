@@ -1,5 +1,7 @@
 # shopping-list
 
+Shopping list made with Vue.js
+
 ## Project setup
 ```
 npm install

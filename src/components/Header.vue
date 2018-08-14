@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <div class='header'>
+      <img src='../assets/header-pic.png'/>
       <h1>Shopping list</h1>
     </div>
 
@@ -26,7 +27,7 @@
 
     <div class='list'>
       <ul>
-        <li v-for='item in list' :class="{strikeout: item.purchased}" :key='' @click='togglePurchased(item)'>{{item.name}}</li>
+        <li v-for='item in list' :class="{strikeout: item.purchased}" :key='' @click='togglePurchased(item)'><i class="fas fa-check"></i>{{item.name}}</li>
       </ul>
     </div>
 
@@ -77,10 +78,16 @@
     width: 100%;
   }
   // HEADER STYLES
-  h1 {
-    color: #393f42;
-    margin: 50px;
+  .header {
+    h1 {
+      color: #393f42;
+      margin: 50px;
+      }
+    img {
+      width: 100%;
+    }
   }
+ 
   // INPUT STYLES
   .input {
     display: flex;
@@ -124,9 +131,10 @@
     li {
       list-style-type: none;
       font-size: 1.5rem;
-
-      &:nth-child(odd) {
-        background-color: #DCDCDC;
+      .fa-check {
+        font-size: 1rem;
+        line-height: 1rem;
+        margin: 10px;
       }
     }
     .strikeout {

@@ -12,16 +12,21 @@
         @keyup.enter='saveItem'
       />
       <div
-        class='button'
+        class='button add'
         @click='saveItem'>
         <i class="fas fa-plus"></i>
+      </div>
+      <div
+        class='button clear'
+        @click='clearList'>
+        Clear list
       </div>
     </div>
     <div v-if='list.length===0'>Congratulations, you have nothing to buy!</div>
 
     <div class='list'>
       <ul>
-        <li v-for='item in list' :class="{strikeout: item.purchased}" @click='togglePurchased(item)' >{{item.name}}</li>
+        <li v-for='item in list' :class="{strikeout: item.purchased}" :key='' @click='togglePurchased(item)'>{{item.name}}</li>
       </ul>
     </div>
 
@@ -54,6 +59,9 @@
       // },
       togglePurchased: function(item) {
         item.purchased = !item.purchased;
+      },
+      clearList: function() {
+        this.list=[];
       }
     }
   }
@@ -68,33 +76,50 @@
   .app {
     width: 100%;
   }
+  // HEADER STYLES
   h1 {
-    color: #696969;
+    color: #393f42;
     margin: 50px;
   }
-  input {
+  // INPUT STYLES
+  .input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    input {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #393f42;
     height: 50px;
     width: 200px;
     outline: none;
     font-size: 1.25rem;
     margin: 20px;
-
-    &::placeholder {
-      text-align: center;
+      &::placeholder {
+        text-align: center;
+      }
+    }
+    .button {
+      display: inline-block;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 5px;
+      color: #fff;
+      margin: 2px;
+      &.add {
+        width: 50px;
+        background-color: #4193e0;
+        font-size: 1.5rem;
+      }
+      &.clear {
+        width: 100px;
+        background-color: #e06060;
+        font-size: 1rem;
+      }
     }
   }
-  .button {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    background-color: #4193e0;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1.5rem;
-  }
+
+  //LIST STYLES
   .list {
     li {
       list-style-type: none;

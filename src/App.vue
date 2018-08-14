@@ -1,22 +1,22 @@
 <template>
   <div id="app">
     <Header/>
-    <Input/>
-    <List/>
+    <!-- <Input/>
+    <List/> -->
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
-import Input from './components/Input.vue';
-import List from './components/List.vue';
+// import Input from './components/Input.vue';
+// import List from './components/List.vue';
 
 export default {
   name: 'app',
   components: {
     Header,
-    Input,
-    List,
+    // Input,
+    // List,
   },
 }
 </script>

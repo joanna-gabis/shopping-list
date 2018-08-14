@@ -4,8 +4,13 @@
       type='text'
       placeholder='add item'
       v-model='inputValue'
+      @keyup.enter=''
     />
-    <div class='button' @click=''><i class="fas fa-plus"></i></div>
+    <div
+      class='button'
+      @click=''>
+      <i class="fas fa-plus"></i>
+    </div>
   </div>
 
 </template>

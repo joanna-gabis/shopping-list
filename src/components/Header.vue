@@ -18,6 +18,11 @@
         <i class="fas fa-plus"></i>
       </div>
       <div
+        class='button delete'
+        @click='deleteBought'>
+        Delete bought
+      </div>
+      <div
         class='button clear'
         @click='clearList'>
         Clear list
@@ -53,11 +58,18 @@
           this.newItem = '';
         }
       },
-      // deleteItem: function(item) {
-      //   let itemToDelete = this.list.find((elem) => elem.name===item.name);
-      //   let index = this.list.indexOf(itemToDelete);
-      //   this.list = this.list.slice(0, index).concat(this.list.slice(index+1));
-      // },
+      deleteBought: function() {
+        // let itemToDelete = this.list.find((elem) => elem.name===item.name);
+        // let index = this.list.indexOf(itemToDelete);
+        // this.list = this.list.slice(0, index).concat(this.list.slice(index+1));
+        let resultArray = [];
+        for(let i=0; i<this.list.length; i++) {
+          if(!this.list[i].purchased) {
+            resultArray.push(this.list[i]);
+          }
+        };
+        this.list = resultArray;
+      },
       togglePurchased: function(item) {
         item.purchased = !item.purchased;
       },
@@ -80,25 +92,26 @@
   // HEADER STYLES
   .header {
     h1 {
-      color: #393f42;
+      color: #282828;
       margin: 50px;
       }
     img {
       width: 100%;
     }
   }
- 
+
   // INPUT STYLES
   .input {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 
     input {
     border: none;
-    border-bottom: 1px solid #393f42;
+    border-bottom: 1px solid #282828;
     height: 50px;
-    width: 200px;
+    width: 250px;
     outline: none;
     font-size: 1.25rem;
     margin: 20px;
@@ -115,12 +128,17 @@
       margin: 2px;
       &.add {
         width: 50px;
-        background-color: #4193e0;
+        background-color: #4388D3;
         font-size: 1.5rem;
       }
+      &.delete {
+        width: 120px;
+        background-color: #F6C500;
+        font-size: 1rem;
+      }
       &.clear {
-        width: 100px;
-        background-color: #e06060;
+        width: 120px;
+        background-color: #EA0000;
         font-size: 1rem;
       }
     }
@@ -128,9 +146,12 @@
 
   //LIST STYLES
   .list {
+    text-align: left;
+    margin-left: 30vw;
     li {
       list-style-type: none;
       font-size: 1.5rem;
+      color: #282828;
       .fa-check {
         font-size: 1rem;
         line-height: 1rem;
@@ -138,8 +159,11 @@
       }
     }
     .strikeout {
-      color: 	#696969;
+      color: 	#7E815D;
       text-decoration: line-through;
+      .fa-check {
+        color: #66CB26;
+      }
     }
   }
 

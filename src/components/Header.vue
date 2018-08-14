@@ -1,17 +1,23 @@
 <template>
   <div class="header">
-    <h1>Shopping list</h1>
+    <h1>{{ header }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Header',
+  data() {
+    return {
+      header: 'Shopping list',
+    };
+  }
 }
 </script>
 
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
+  h1 {
+    color: #5e5757;
+    margin: 50px;
+  }
 </style>
